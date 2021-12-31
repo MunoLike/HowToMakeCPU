@@ -1,3 +1,7 @@
 *
 !*/
 !*.*
+fpga/*/db/
+fpga/*/incremental_db
+fpga/*/output_files
+
