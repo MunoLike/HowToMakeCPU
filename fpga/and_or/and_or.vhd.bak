@@ -1,0 +1,4 @@
+library IEEE;
+use IEEE_std_logic_1164.all;
+
+-- 入出力

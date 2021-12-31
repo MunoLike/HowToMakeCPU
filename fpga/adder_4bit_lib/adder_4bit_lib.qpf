@@ -19,13 +19,14 @@
 #
 # Quartus Prime
 # Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
-# Date created = 20:37:23  December 30, 2021
+# Date created = 10:44:19  December 31, 2021
 #
 # -------------------------------------------------------------------------- #
 
 QUARTUS_VERSION = "21.1"
-DATE = "20:37:23  December 30, 2021"
+DATE = "10:44:19  December 31, 2021"
 
 # Revisions
 
+PROJECT_REVISION = "adder_4bit_lib"
 PROJECT_REVISION = "adder_4bitlib"
