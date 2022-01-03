@@ -1,6 +1,5 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
-use IEEE.std_logic_unsigned.all;
 
 entity dec_7seg_sim is
 end dec_7seg_sim;
