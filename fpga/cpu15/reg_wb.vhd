@@ -26,7 +26,7 @@ begin
     process (CLK_WB)
     begin
         if (CLK_WB'event and CLK_WB = '1') then
-            if (RESET_N = '1') then
+            if (RESET_N = '0') then
                 REG_0 <= (others => '0');
                 REG_1 <= (others => '0');
                 REG_2 <= (others => '0');

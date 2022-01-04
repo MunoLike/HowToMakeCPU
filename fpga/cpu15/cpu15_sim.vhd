@@ -121,6 +121,10 @@ architecture sim of cpu15_sim is
         );
     end component;
 
+    signal CLK      : std_logic;
+    signal RESET_N  : std_logic;
+    signal IO65_IN  : std_logic_vector(15 downto 0);
+    signal IO64_OUT : std_logic_vector(15 downto 0);
     signal CLK_FT   : std_logic;
     signal CLK_DC   : std_logic;
     signal CLK_EX   : std_logic;
@@ -157,7 +161,7 @@ architecture sim of cpu15_sim is
     signal RAM_7    : std_logic_vector(15 downto 0);
 
 begin
-    
+
     C1 : clk_gen
     port map(
         CLK    => CLK,
@@ -218,19 +222,19 @@ begin
 
     C6 : ram_dc
     port map(
-        CLK_DC    => CLK_DC,
-        RAM_AD_IN => PROM_OUT(7 downto 0),
-        RAM_0     => RAM_0,
-        RAM_1     => RAM_1,
-        RAM_2     => RAM_2,
-        RAM_3     => RAM_3,
-        RAM_4     => RAM_4,
-        RAM_5     => RAM_5,
-        RAM_6     => RAM_6,
-        RAM_7     => RAM_7,
-        IO65_IN => IO65_IN,
+        CLK_DC     => CLK_DC,
+        RAM_AD_IN  => PROM_OUT(7 downto 0),
+        RAM_0      => RAM_0,
+        RAM_1      => RAM_1,
+        RAM_2      => RAM_2,
+        RAM_3      => RAM_3,
+        RAM_4      => RAM_4,
+        RAM_5      => RAM_5,
+        RAM_6      => RAM_6,
+        RAM_7      => RAM_7,
+        IO65_IN    => IO65_IN,
         RAM_AD_OUT => RAM_ADDR,
-        RAM_OUT   => RAM_OUT
+        RAM_OUT    => RAM_OUT
     );
 
     C7 : exec
@@ -283,6 +287,18 @@ begin
         IO64_OUT => IO64_OUT
     );
 
-    
-    process
+    process begin
+        CLK <= '1';
+        wait for 10 ns;
+        CLK <= '0';
+        wait for 10 ns;
+    end process;
+
+    process begin
+        RESET_N <= '0';
+        wait for 100 ns;
+        RESET_N <= '1';
+        wait;
+    end process;
+
 end architecture sim;
