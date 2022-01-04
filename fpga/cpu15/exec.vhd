@@ -98,7 +98,6 @@ begin
                         end if;
                         REG_WEN <= '0';
                         RAM_WEN <= '0';
-                        PC      <= PC + 1;
                     when "1100" => --JMP
                         REG_WEN <= '0';
                         RAM_WEN <= '0';
