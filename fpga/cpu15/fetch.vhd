@@ -4,9 +4,9 @@ use IEEE.std_logic_unsigned.all;
 
 entity fetch is
     port (
-        CLK_FT  : in std_logic;
-        P_COUNT : in std_logic_vector(7 downto 0);
-        PROM_OUT    : out std_logic_vector(14 downto 0)
+        CLK_FT   : in std_logic;
+        P_COUNT  : in std_logic_vector(7 downto 0);
+        PROM_OUT : out std_logic_vector(14 downto 0)
     );
 end entity fetch;
 
@@ -16,22 +16,22 @@ architecture rtl of fetch is
 
     --1 to 10 adder
     constant MEM : MEMORY := (
-        "100100000000000",
-        "100000000000000",
-        "100100100000000",
-        "100000100000001",
-        "100101000000000",
-        "100001000000000",
-        "100101100000000",
-        "100001100001010",
-        "000101000100000",
-        "000100001000000",
-        "111000001000000",
-        "101001001100000",
-        "101100000001110",
-        "110000000001000",
-        "111100000000000",
-        "000000000000000"
+        "100100000000000", --ldh reg0, 0
+        "100000000000000", --ldl reg0, 0
+        "100100100000000", --ldh reg1, 0
+        "100000100000001", --ldl reg1, 1
+        "100101000000000", --ldh reg2, 0
+        "100001000000000", --ldl reg2, 0
+        "100101100000000", --ldh reg3, 0
+        "100001100001010", --ldl reg3, 10
+        "000101000100000", --add reg2, reg1
+        "000100001000000", --add reg0, reg2
+        "111000001000000", --st reg0, 64
+        "101001001100000", --cmp reg2, reg3
+        "101100000001110", --je 14
+        "110000000001000", --jmp 8
+        "111100000000000", --hlt
+        "000000000000000"  --nop
     );
 begin
 
