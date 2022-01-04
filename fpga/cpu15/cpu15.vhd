@@ -1,6 +1,6 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
-use IEEE.numeric_std.all;
+use IEEE.std_logic_unsigned.all;
 
 entity cpu15 is
     port (
@@ -25,7 +25,7 @@ architecture rtl of cpu15 is
     component fetch
         port (
             CLK_FT   : in std_logic;
-            P_COUNT  : out std_logic_vector(7 downto 0);
+            P_COUNT  : in std_logic_vector(7 downto 0);
             PROM_OUT : out std_logic_vector(14 downto 0)
         );
     end component;
@@ -35,7 +35,7 @@ architecture rtl of cpu15 is
             CLK_DC   : in std_logic;
             PROM_OUT : in std_logic_vector(14 downto 0);
             OP_CODE  : out std_logic_vector(3 downto 0);
-            OP_DATA  : out std_logic_vector(7 downto 0);
+            OP_DATA  : out std_logic_vector(7 downto 0)
         );
     end component;
 
@@ -84,12 +84,12 @@ architecture rtl of cpu15 is
             OP_DATA : in std_logic_vector(7 downto 0);
             RAM_OUT : in std_logic_vector(15 downto 0);
             P_COUNT : out std_logic_vector(7 downto 0);
-            REG_IN  : out std_logic_vector(7 downto 0);
+            REG_IN  : out std_logic_vector(15 downto 0);
             RAM_IN  : out std_logic_vector(15 downto 0);
             REG_WEN : out std_logic;
             RAM_WEN : out std_logic
         );
-    end component
+    end component;
 
     component reg_wb
         port (
@@ -105,7 +105,7 @@ architecture rtl of cpu15 is
             REG_4   : out std_logic_vector(15 downto 0);
             REG_5   : out std_logic_vector(15 downto 0);
             REG_6   : out std_logic_vector(15 downto 0);
-            REG_7   : out std_logic_vector(15 downto 0);
+            REG_7   : out std_logic_vector(15 downto 0)
         );
     end component;
 
@@ -131,7 +131,7 @@ architecture rtl of cpu15 is
     signal CLK_DC   : std_logic;
     signal CLK_EX   : std_logic;
     signal CLK_WB   : std_logic;
-    signal P_COUNT  : std_logic_vector(15 downto 0);
+    signal P_COUNT  : std_logic_vector(7 downto 0);
     signal PROM_OUT : std_logic_vector(14 downto 0);
     signal OP_CODE  : std_logic_vector(3 downto 0);
     signal OP_DATA  : std_logic_vector(7 downto 0);
@@ -234,8 +234,9 @@ begin
         RAM_5     => RAM_5,
         RAM_6     => RAM_6,
         RAM_7     => RAM_7,
-        N_REG_OUT => N_REG_B,
-        REG_OUT   => REG_B
+        IO65_IN => IO65_IN,
+        RAM_AD_OUT => RAM_ADDR,
+        RAM_OUT   => RAM_OUT
     );
 
     C7 : exec

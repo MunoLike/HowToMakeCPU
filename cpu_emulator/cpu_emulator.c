@@ -150,6 +150,12 @@ void assembler() {
   rom[12] = je(14);
   rom[13] = jmp(8);
   rom[14] = hlt();
+
+  for (int i = 0; i < 15; i++) {
+    printf("\"");
+    printb(rom[i]);
+    printf("\",\n");
+  }
 }
 
 short mov(short ra, short rb) { return (MOV << 11) | (ra << 8) | (rb << 5); }
@@ -182,30 +188,28 @@ short je(short addr) { return ((JE << 11) | (addr & 0x00ff)); }
 
 short jmp(short addr) { return ((JMP << 11) | (addr & 0x00ff)); }
 
-short ld(short ra, short addr) { return (LD << 11) | (ra << 8) | (addr & 0x00ff); }
-
-short st(short ra, short addr) { return (ST << 11) | (ra << 8) | (addr & 0x00ff); }
-
-short hlt(){
-  return HLT << 11;
+short ld(short ra, short addr) {
+  return (LD << 11) | (ra << 8) | (addr & 0x00ff);
 }
 
-short op_code(short ir){
-  return ir >> 11;
+short st(short ra, short addr) {
+  return (ST << 11) | (ra << 8) | (addr & 0x00ff);
 }
 
-short op_regA(short ir){
-  return ((ir >> 8) & 0x0007);
-}
+short hlt() { return HLT << 11; }
 
-short op_regB(short ir){
-  return ((ir >> 5) & 0x0007);
-}
+short op_code(short ir) { return ir >> 11; }
 
-short op_data(short ir){
-  return (ir & 0x00ff);
-}
+short op_regA(short ir) { return ((ir >> 8) & 0x0007); }
 
-short op_addr(short ir){
-  return (ir & 0x00ff);
+short op_regB(short ir) { return ((ir >> 5) & 0x0007); }
+
+short op_data(short ir) { return (ir & 0x00ff); }
+
+short op_addr(short ir) { return (ir & 0x00ff); }
+
+void printb(unsigned short v) {
+  unsigned int mask = (int)1 << (sizeof(v) * 7);
+  do putchar(mask & v ? '1' : '0');
+  while (mask >>= 1);
 }
