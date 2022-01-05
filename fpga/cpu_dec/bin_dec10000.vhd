@@ -15,5 +15,31 @@ architecture rtl of bin_dec10000 is
     signal CMP_INT : integer range 0 to 65535;
     signal REM_INT : integer range 0 to 65535;
 begin
-
+    CMP_INT <= conv_integer(BIN__IN);
+    process (CMP_INT)
+    begin
+        if (CMP_INT > 59999) then
+            DEC_OUT4 <= "0110";
+            REM_INT  <= CMP_INT - 60000;
+        elsif (CMP_INT > 49999) then
+            DEC_OUT4 <= "0101";
+            REM_INT  <= CMP_INT - 50000;
+        elsif (CMP_INT > 39999) then
+            DEC_OUT4 <= "0100";
+            REM_INT  <= CMP_INT - 40000;
+        elsif (CMP_INT > 29999) then
+            DEC_OUT4 <= "0011";
+            REM_INT  <= CMP_INT - 30000;
+        elsif (CMP_INT > 19999) then
+            DEC_OUT4 <= "0010";
+            REM_INT  <= CMP_INT - 20000;
+        elsif (CMP_INT > 9999) then
+            DEC_OUT4 <= "0001";
+            REM_INT  <= CMP_INT - 10000;
+        else
+            DEC_OUT4 <= "0000";
+            REM_INT  <= CMP_INT;
+        end if;
+    end process;
+    REMINDER4 <= conv_std_logic_vector(REM_INT, 14);
 end architecture rtl;
