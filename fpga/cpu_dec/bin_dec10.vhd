@@ -18,37 +18,37 @@ begin
     CMP_INT <= conv_integer(BIN_IN1);
     process (CMP_INT)
     begin
-        if (CMP_INT > 899) then
-            DEC_OUT2 <= "1001";
-            REM_INT  <= CMP_INT - 900;
-        elsif (CMP_INT > 799) then
-            DEC_OUT2 <= "1000";
-            REM_INT  <= CMP_INT - 800;
-        elsif (CMP_INT > 699) then
-            DEC_OUT2 <= "0111";
-            REM_INT  <= CMP_INT - 700;
-        elsif (CMP_INT > 599) then
-            DEC_OUT2 <= "0110";
-            REM_INT  <= CMP_INT - 600;
-        elsif (CMP_INT > 499) then
-            DEC_OUT2 <= "0101";
-            REM_INT  <= CMP_INT - 500;
-        elsif (CMP_INT > 399) then
-            DEC_OUT2 <= "0100";
-            REM_INT  <= CMP_INT - 400;
-        elsif (CMP_INT > 299) then
-            DEC_OUT2 <= "0011";
-            REM_INT  <= CMP_INT - 300;
-        elsif (CMP_INT > 199) then
-            DEC_OUT2 <= "0010";
-            REM_INT  <= CMP_INT - 200;
-        elsif (CMP_INT > 99) then
-            DEC_OUT2 <= "0001";
-            REM_INT  <= CMP_INT - 100;
+        if (CMP_INT > 89) then
+            DEC_OUT1 <= "1001";
+            REM_INT  <= CMP_INT - 90;
+        elsif (CMP_INT > 79) then
+            DEC_OUT1 <= "1000";
+            REM_INT  <= CMP_INT - 80;
+        elsif (CMP_INT > 69) then
+            DEC_OUT1 <= "0111";
+            REM_INT  <= CMP_INT - 70;
+        elsif (CMP_INT > 59) then
+            DEC_OUT1 <= "0110";
+            REM_INT  <= CMP_INT - 60;
+        elsif (CMP_INT > 49) then
+            DEC_OUT1 <= "0101";
+            REM_INT  <= CMP_INT - 50;
+        elsif (CMP_INT > 39) then
+            DEC_OUT1 <= "0100";
+            REM_INT  <= CMP_INT - 40;
+        elsif (CMP_INT > 29) then
+            DEC_OUT1 <= "0011";
+            REM_INT  <= CMP_INT - 30;
+        elsif (CMP_INT > 19) then
+            DEC_OUT1 <= "0010";
+            REM_INT  <= CMP_INT - 20;
+        elsif (CMP_INT > 9) then
+            DEC_OUT1 <= "0001";
+            REM_INT  <= CMP_INT - 10;
         else
-            DEC_OUT2 <= "0000";
+            DEC_OUT1 <= "0000";
             REM_INT  <= CMP_INT;
         end if;
     end process;
-    REMINDER2 <= conv_std_logic_vector(REM_INT, 7);
+    REMINDER1 <= conv_std_logic_vector(REM_INT, 4                                                                                          );
 end architecture rtl;
