@@ -108,7 +108,7 @@ begin
                         RAM_WEN <= '0';
                         PC      <= PC + 1;
                     when "1110" => --ST
-                        REG_IN  <= REG_A;
+                        RAM_IN  <= REG_A;
                         REG_WEN <= '0';
                         RAM_WEN <= '1';
                         PC      <= PC + 1;
