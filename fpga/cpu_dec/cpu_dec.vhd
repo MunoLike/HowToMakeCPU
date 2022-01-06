@@ -7,11 +7,11 @@ entity cpu_dec is
         RESET_N  : in std_logic;
         IO65_IN  : in std_logic_vector(15 downto 0);
         IO64_OUT : out std_logic_vector(15 downto 0);
-        HEX4     : out std_logic_vector(6 downto 0);
-        HEX3     : out std_logic_vector(6 downto 0);
-        HEX2     : out std_logic_vector(6 downto 0);
-        HEX1     : out std_logic_vector(6 downto 0);
-        HEX0     : out std_logic_vector(6 downto 0)
+        HEX4     : out std_logic_vector(7 downto 0);
+        HEX3     : out std_logic_vector(7 downto 0);
+        HEX2     : out std_logic_vector(7 downto 0);
+        HEX1     : out std_logic_vector(7 downto 0);
+        HEX0     : out std_logic_vector(7 downto 0)
     );
 end entity cpu_dec;
 
@@ -20,10 +20,11 @@ architecture rtl of cpu_dec is
     component cpu15
         port (
             CLK      : in std_logic;
+            RESET_N  : in std_logic;
             IO65_IN  : in std_logic_vector(15 downto 0);
             IO64_OUT : out std_logic_vector(15 downto 0)
         );
-    end component
+    end component;
 
     component bin_dec10000
         port (
@@ -31,7 +32,7 @@ architecture rtl of cpu_dec is
             DEC_OUT4  : out std_logic_vector(3 downto 0);
             REMINDER4 : out std_logic_vector(13 downto 0)
         );
-    end component
+    end component;
 
     component bin_dec1000
         port (
@@ -39,7 +40,7 @@ architecture rtl of cpu_dec is
             DEC_OUT3  : out std_logic_vector(3 downto 0);
             REMINDER3 : out std_logic_vector(9 downto 0)
         );
-    end component
+    end component;
 
     component bin_dec100
         port (
@@ -47,7 +48,7 @@ architecture rtl of cpu_dec is
             DEC_OUT2  : out std_logic_vector(3 downto 0);
             REMINDER2 : out std_logic_vector(6 downto 0)
         );
-    end component
+    end component;
 
     component bin_dec10
         port (
@@ -55,12 +56,12 @@ architecture rtl of cpu_dec is
             DEC_OUT1  : out std_logic_vector(3 downto 0);
             REMINDER1 : out std_logic_vector(3 downto 0)
         );
-    end component
+    end component;
 
     component dec_7seg
         port (
             DIN  : in std_logic_vector(3 downto 0);
-            SEG7 : out std_logic_vector(6 downto 0)
+            SEG7 : out std_logic_vector(7 downto 0)
         );
     end component;
 
@@ -92,21 +93,21 @@ begin
 
     C3 : bin_dec1000
     port map(
-        BIN_IN3   => BIN_IN3,
+        BIN_IN3   => REMINDER4,
         DEC_OUT3  => DEC_OUT3,
         REMINDER3 => REMINDER3
     );
 
     C4 : bin_dec100
     port map(
-        BIN_IN2   => BIN_IN2,
+        BIN_IN2   => REMINDER3,
         DEC_OUT2  => DEC_OUT2,
         REMINDER2 => REMINDER2
     );
 
     C5 : bin_dec10
     port map(
-        BIN_IN1   => BIN_IN1,
+        BIN_IN1   => REMINDER2,
         DEC_OUT1  => DEC_OUT1,
         REMINDER1 => DEC_OUT0
     );
