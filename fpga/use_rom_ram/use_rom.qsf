@@ -47,5 +47,28 @@ set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 256
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name VHDL_FILE ../cpu15_rom_ram/reg_wb.vhd
+set_global_assignment -name VHDL_FILE ../cpu15_rom_ram/reg_dc.vhd
+set_global_assignment -name VHDL_FILE ../cpu15_rom_ram/ram_wb.vhd
+set_global_assignment -name VHDL_FILE ../cpu15_rom_ram/ram_dc.vhd
+set_global_assignment -name VHDL_FILE ../cpu15_rom_ram/fetch_rom.vhd
+set_global_assignment -name SOURCE_FILE ../cpu15_rom_ram/fetch_rom.cmp
+set_global_assignment -name VHDL_FILE ../cpu15_rom_ram/fetch.vhd
+set_global_assignment -name VHDL_FILE ../cpu15_rom_ram/exec.vhd
+set_global_assignment -name VHDL_FILE ../cpu15_rom_ram/decode.vhd
+set_global_assignment -name VHDL_FILE ../cpu15_rom_ram/dec_7seg.vhd
+set_global_assignment -name VHDL_FILE ../cpu15_rom_ram/cpu15.vhd
+set_global_assignment -name VHDL_FILE ../cpu15_rom_ram/cpu_dec_slow.vhd
+set_global_assignment -name VHDL_FILE ../cpu15_rom_ram/cpu_dec.vhd
+set_global_assignment -name VHDL_FILE ../cpu15_rom_ram/clk_gen.vhd
+set_global_assignment -name VHDL_FILE ../cpu15_rom_ram/clk_down.vhd
+set_global_assignment -name VHDL_FILE ../cpu15_rom_ram/bin_dec10000.vhd
+set_global_assignment -name VHDL_FILE ../cpu15_rom_ram/bin_dec1000.vhd
+set_global_assignment -name VHDL_FILE ../cpu15_rom_ram/bin_dec100.vhd
+set_global_assignment -name VHDL_FILE ../cpu15_rom_ram/bin_dec10.vhd
+set_global_assignment -name VHDL_FILE ram_dc_wb.vhd
+set_global_assignment -name SOURCE_FILE fetch_rom.cmp
 set_global_assignment -name MIF_FILE rom_init.mif
 set_global_assignment -name QIP_FILE fetch_rom.qip
