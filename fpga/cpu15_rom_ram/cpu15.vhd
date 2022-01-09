@@ -91,10 +91,10 @@ architecture rtl of cpu15 is
         );
     end component;
 
-    component ram_dc_wb
+    component mega_ram
         port (
-            CLK_DC   : in std_logic;
-            CLK_WB   : in std_logic;
+            CLK   : in std_logic;
+            CLK_EX   : in std_logic;
             RAM_ADDR : in std_logic_vector(7 downto 0);
             RAM_IN   : in std_logic_vector(15 downto 0);
             IO65_IN  : in std_logic_vector(15 downto 0);
@@ -224,10 +224,10 @@ begin
         REG_7   => REG_7
     );
 
-    C8 : ram_dc_wb
+    C8 : mega_ram
     port map(
-        CLK_DC   => CLK_DC,
-        CLK_WB   => CLK_WB,
+        CLK   => CLK,
+        CLK_EX   => CLK_EX,
         RAM_ADDR => PROM_OUT(7 downto 0),
         RAM_IN   => RAM_IN,
         IO65_IN  => IO65_IN and "0000001111111111",
